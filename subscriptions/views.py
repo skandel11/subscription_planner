@@ -1,3 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .models import  Subscription
+from django.contrib import messages
 
-# Create your views here.
+def subscriptions(request):
+    subs= Subscription.objects.order_by('-expiry_date')
+    context={
+        'subs': subs
+    }
+    return render(request, 'pages/subscriptions.html', context)

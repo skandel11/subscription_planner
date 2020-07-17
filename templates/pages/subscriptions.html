@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+.col-sm-3{
+  margin-top: 19px;
+}
+.card-body{
+  margin:-15px;
+  text-align:center;
+
+}
+</style>
+<div class="row">
+  {% if subs %}
+    {% for sub in subs  %}
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">{{sub.service}}</h5>
+            <p class="card-text">Email Used: {{sub.email}}</p>
+            <p class="card-text">Username: {{sub.username}}</p>
+            <p class="card-text">Category: {{sub.category}}</p>
+            <p class="card-text">Price: ${{sub.price}} per month</p>
+            <p class="card-text">Subscribed Date: {{sub.subscribe_date}}</p>
+            <p class="card-text">Expiry Date: {{sub.expiry_date}}</p>
+            <p class="card-text">Personal Email: {{sub.personal_email}}</p>
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+
+  {% else %}
+    <div class="col-md-12">
+      <p> No Subscriptions Available </p>
+    </div>
+  {% endif %}
+</div>
+{% endblock content %}
